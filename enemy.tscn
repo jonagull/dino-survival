@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dl30hepddrgww"]
+[gd_scene load_steps=23 format=3 uid="uid://dl30hepddrgww"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_i36je"]
 [ext_resource type="Texture2D" uid="uid://cxrcrx1j6t2ry" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_0.png" id="2_6eap8"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://blcjnsi8rue0j" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_15.png" id="17_7ocfk"]
 [ext_resource type="Texture2D" uid="uid://dqu2mxba2kanq" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_16.png" id="18_km27w"]
 [ext_resource type="Texture2D" uid="uid://qwioveiff01v" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_17.png" id="19_eap4a"]
+[ext_resource type="Script" path="res://health_component.gd" id="20_defsk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jjgly"]
 
@@ -85,12 +86,8 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D"]
+z_index = 5
 script = ExtResource("1_i36je")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_6eap8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jjgly")
@@ -99,3 +96,6 @@ shape = SubResource("CircleShape2D_jjgly")
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_okm4f")
 animation = &"walk"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("20_defsk")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=62 format=3 uid="uid://dk1cx3fwgswpw"]
+[gd_scene load_steps=63 format=3 uid="uid://dk1cx3fwgswpw"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_qt36i"]
 [ext_resource type="Texture2D" uid="uid://c3no4sdfx8l5a" path="res://characterAnimations/PNG/Unarmed_Idle/Unarmed_Idle_full.png" id="2_hajl0"]
 [ext_resource type="Texture2D" uid="uid://cr0vnd3g17onw" path="res://characterAnimations/PNG/Unarmed_Walk/Unarmed_Walk_full.png" id="3_1etts"]
+[ext_resource type="Script" path="res://health_component.gd" id="4_amulw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vv1nm"]
 atlas = ExtResource("2_hajl0")
@@ -456,3 +457,6 @@ shape = SubResource("CapsuleShape2D_edurq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_amulw")

@@ -1,9 +1,14 @@
 extends CharacterBody2D
 
 @onready var anim_sprite = $AnimatedSprite2D
+@onready var health_component = $HealthComponent
 @export var speed := 100
 
 var last_direction := "down"
+
+func _ready():
+	# Connect health signals
+	health_component.health_depleted.connect(_on_health_depleted)
 
 func _physics_process(delta):
 	var input_vector = Vector2(
@@ -33,3 +38,12 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		anim_sprite.animation = "idle_" + last_direction
 		anim_sprite.play()
+
+func take_damage(amount: float) -> void:
+	health_component.take_damage(amount)
+
+func _on_health_depleted() -> void:
+	# Handle player death
+	queue_free()
+	# You might want to emit a signal here to notify the game manager
+	# or show a game over screen

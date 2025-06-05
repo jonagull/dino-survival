@@ -2,11 +2,13 @@ extends Node2D
 
 @onready var hud = $HUD
 @onready var player = $Player
+@onready var player_health_bar = $HUD/PlayerHealthBar
 
 var build_mode: bool = false
 var current_ghost: Node2D = null
 var current_turret_scene: PackedScene = null
 @export var enemy_scene: PackedScene
+@export var floating_health_bar_scene: PackedScene
 
 # Wave system variables
 var current_wave: int = 0
@@ -33,6 +35,10 @@ func _ready():
 	hud.stone_turret_selected.connect(enter_build_mode)
 	hud.wood_turret_selected.connect(_on_wood_turret_selected)
 	
+	# Setup player health bar
+	if player and player_health_bar:
+		player_health_bar.setup(player.get_node("HealthComponent"))
+	
 	# Start first wave after a delay
 	await get_tree().create_timer(wave_delay).timeout
 	start_wave()
@@ -57,6 +63,12 @@ func spawn_enemy():
 	enemy.global_position = spawn_point
 	enemy.target = player
 	add_child(enemy)
+	
+	# Add health bar to enemy
+	var health_bar = floating_health_bar_scene.instantiate()
+	add_child(health_bar)
+	health_bar.setup(enemy, enemy.get_node("HealthComponent"))
+	
 	enemies_remaining -= 1
 
 func _process(delta):
@@ -92,6 +104,11 @@ func place_turret_at(pos: Vector2):
 	var turret = current_turret_scene.instantiate()
 	turret.position = snap_to_grid(pos)
 	add_child(turret)
+	
+	# Add health bar to turret
+	var health_bar = floating_health_bar_scene.instantiate()
+	add_child(health_bar)
+	health_bar.setup(turret, turret.get_node("HealthComponent"))
 
 	current_ghost.queue_free()
 	current_ghost = null

@@ -5,6 +5,7 @@ var target: Node2D = null
 var attack_range: float = 32.0
 var attack_cooldown: float = 1.0
 var time_since_attack: float = 0.0
+@export var attack_damage: float = 10.0
 
 func _ready():
 	# Optionally set a target here if needed
@@ -18,8 +19,8 @@ func _process(delta):
 			time_since_attack += delta
 			if time_since_attack >= attack_cooldown:
 				time_since_attack = 0.0
-				print("Enemy attacks!")
-				# call damage() on target
+				if target.has_method("take_damage"):
+					target.take_damage(attack_damage)
 		else:
 			var direction = (target.global_position - global_position).normalized()
 			velocity = direction * speed

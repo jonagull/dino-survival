@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://4ql02m7snt4o"]
+[gd_scene load_steps=3 format=3 uid="uid://4ql02m7snt4o"]
 
 [ext_resource type="Texture2D" uid="uid://bt8o76rwjocl" path="res://assets/turrets/turrething.png" id="1_qmiw3"]
+[ext_resource type="Script" path="res://health_component.gd" id="2_0ih0f"]
 
 [node name="StoneTurret" type="Node2D"]
 
@@ -8,3 +9,6 @@
 z_index = 5
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_qmiw3")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_0ih0f")

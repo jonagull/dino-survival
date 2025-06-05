@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://vg5gqxla4wmp"]
+
+[ext_resource type="Script" path="res://health_bar.gd" id="1_2k4m3"]
+
+[node name="HealthBar" type="ProgressBar"]
+offset_right = 30.0
+offset_bottom = 6.0
+show_percentage = false
+script = ExtResource("1_2k4m3")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 6.0
+color = Color(0.2, 0.2, 0.2, 0.8)
+
+[node name="Fill" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 6.0
+color = Color(0.2, 0.8, 0.2, 1)
