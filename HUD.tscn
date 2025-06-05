@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bry0nmyqohk85"]
+[gd_scene load_steps=4 format=3 uid="uid://bry0nmyqohk85"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_k1i6v"]
+[ext_resource type="PackedScene" uid="uid://4ql02m7snt4o" path="res://StoneTurret.tscn" id="2_sun80"]
+[ext_resource type="PackedScene" uid="uid://dnfgtfks3bm45" path="res://GhostStoneTurret.tscn" id="3_xvmn3"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_k1i6v")
+stone_turret_scene = ExtResource("2_sun80")
+stone_turret_ghost_scene = ExtResource("3_xvmn3")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 1030.0

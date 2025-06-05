@@ -2,8 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bt8o76rwjocl" path="res://assets/turrets/turrething.png" id="1_j5j7k"]
 
-[node name="Node2D" type="Node2D"]
+[node name="GhostStoneTurret" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.00392157, 0.00392157, 0.00392157, 0.00392157)
+z_index = 5
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_j5j7k")

@@ -1,0 +1,101 @@
+[gd_scene load_steps=22 format=3 uid="uid://dl30hepddrgww"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_i36je"]
+[ext_resource type="Texture2D" uid="uid://cxrcrx1j6t2ry" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_0.png" id="2_6eap8"]
+[ext_resource type="Texture2D" uid="uid://bjby26836ug5e" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_1.png" id="3_c3t7x"]
+[ext_resource type="Texture2D" uid="uid://bpqgqcqxm24ss" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_2.png" id="4_svxe5"]
+[ext_resource type="Texture2D" uid="uid://bhlwe1f8eahav" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_3.png" id="5_6ea00"]
+[ext_resource type="Texture2D" uid="uid://dxcybgw63m3gu" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_4.png" id="6_halcc"]
+[ext_resource type="Texture2D" uid="uid://brrnobfa224wj" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_5.png" id="7_edd3r"]
+[ext_resource type="Texture2D" uid="uid://cdjvk3chxcuoc" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_6.png" id="8_jvf2j"]
+[ext_resource type="Texture2D" uid="uid://bhw2hyu4uq1e" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_7.png" id="9_hetpg"]
+[ext_resource type="Texture2D" uid="uid://dnev5jsjr4rh8" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_8.png" id="10_wnot1"]
+[ext_resource type="Texture2D" uid="uid://0mdjidtvuna8" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_9.png" id="11_x0w14"]
+[ext_resource type="Texture2D" uid="uid://c8lfr525pcjwi" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_10.png" id="12_4mmaw"]
+[ext_resource type="Texture2D" uid="uid://vbjdn0nlyf4g" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_11.png" id="13_hcdsa"]
+[ext_resource type="Texture2D" uid="uid://6kk25rwunh1a" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_12.png" id="14_qor8w"]
+[ext_resource type="Texture2D" uid="uid://bvqpsnf855nul" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_13.png" id="15_qway6"]
+[ext_resource type="Texture2D" uid="uid://brfw6c175tkf0" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_14.png" id="16_m0shy"]
+[ext_resource type="Texture2D" uid="uid://blcjnsi8rue0j" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_15.png" id="17_7ocfk"]
+[ext_resource type="Texture2D" uid="uid://dqu2mxba2kanq" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_16.png" id="18_km27w"]
+[ext_resource type="Texture2D" uid="uid://qwioveiff01v" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_17.png" id="19_eap4a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjgly"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okm4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6eap8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c3t7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_svxe5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6ea00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_halcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_edd3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jvf2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hetpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wnot1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x0w14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4mmaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hcdsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qor8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qway6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_m0shy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7ocfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_km27w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_eap4a")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_i36je")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6eap8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jjgly")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_okm4f")
+animation = &"walk"

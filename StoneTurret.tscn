@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bt8o76rwjocl" path="res://assets/turrets/turrething.png" id="1_qmiw3"]
 
-[node name="Node2D" type="Node2D"]
+[node name="StoneTurret" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_qmiw3")
