@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://buuovhbpfa0ni"]
+
+[ext_resource type="Script" uid="uid://dp5hgju0pnyb0" path="res://wood_counter.gd" id="1_script"]
+
+[node name="MaterialsCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_script")
+
+[node name="WoodLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+text = "Wood: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StoneLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 33.0
+offset_right = 136.0
+offset_bottom = 56.0
+text = "Stone: 0 
+"

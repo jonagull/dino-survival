@@ -1,14 +1,18 @@
 extends Node2D
 
 @onready var hud = $HUD
+@onready var build_menu = $HUD/Panel/BuildMenu
 @onready var player = $Player
 @onready var player_health_bar = $HUD/PlayerHealthBar
+@onready var materials_counter = $HUD/MaterialsCounter
+# @onready var stone_counter = $HUD/StoneCounter
 
 var build_mode: bool = false
 var current_ghost: Node2D = null
 var current_turret_scene: PackedScene = null
 @export var enemy_scene: PackedScene
 @export var floating_health_bar_scene: PackedScene
+@export var spawn_enemies: bool = true
 
 # Wave system variables
 var current_wave: int = 0
@@ -27,11 +31,17 @@ var spawn_points: Array[Vector2] = [
 ]
 
 func _ready():
+	if hud and player:
+		#hud.connect_player_wood_signal(player)
+		# Connect wood counter directly
+		player.wood_changed.connect(materials_counter.update_wood)
+		player.stone_changed.connect(materials_counter.update_stone)
+		player.wood_changed.connect(hud.update_build_menu)
+		player.stone_changed.connect(hud.update_build_menu)
+
 	if not hud:
-		print('hud not found')
 		return
 	# Connect HUD signals
-	print('connecting hud signals')
 	hud.stone_turret_selected.connect(enter_build_mode)
 	hud.wood_turret_selected.connect(_on_wood_turret_selected)
 	
@@ -50,6 +60,10 @@ func start_wave():
 	print("Starting wave ", current_wave, " with ", enemies_remaining, " enemies")
 
 func spawn_enemy():
+	if not spawn_enemies:
+		return
+
+
 	if enemies_remaining <= 0:
 		wave_in_progress = false
 		# Start next wave after delay
@@ -61,8 +75,11 @@ func spawn_enemy():
 	# Choose random spawn point
 	var spawn_point = spawn_points[randi() % spawn_points.size()]
 	enemy.global_position = spawn_point
-	enemy.target = player
-	add_child(enemy)
+	
+	# Only set target if player is valid
+	if player and is_instance_valid(player):
+		enemy.target = player
+		add_child(enemy)
 	
 	# Add health bar to enemy
 	var health_bar = floating_health_bar_scene.instantiate()

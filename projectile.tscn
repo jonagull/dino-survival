@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://das8kf6wx3grd"]
+
+[ext_resource type="Texture2D" uid="uid://71lwi8xevdy6" path="res://assets/turrets/52.png" id="1_j3apq"]
+[ext_resource type="Script" uid="uid://ckenkani8n8xh" path="res://projectile.gd" id="1_ufp45"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b684g"]
+
+[node name="Projectile" type="Area2D"]
+z_index = 11
+script = ExtResource("1_ufp45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 11
+shape = SubResource("CircleShape2D_b684g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_j3apq")

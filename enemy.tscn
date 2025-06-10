@@ -1,14 +1,22 @@
-[gd_scene load_steps=23 format=3 uid="uid://dl30hepddrgww"]
+[gd_scene load_steps=31 format=3 uid="uid://dl30hepddrgww"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_i36je"]
+[ext_resource type="Script" uid="uid://cn5twnwbk6wg0" path="res://enemy.gd" id="1_i36je"]
 [ext_resource type="Texture2D" uid="uid://cxrcrx1j6t2ry" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_0.png" id="2_6eap8"]
+[ext_resource type="Texture2D" uid="uid://b8dl8y75yv4vn" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_0.png" id="2_i5fh1"]
 [ext_resource type="Texture2D" uid="uid://bjby26836ug5e" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_1.png" id="3_c3t7x"]
+[ext_resource type="Texture2D" uid="uid://cdbr0jv5rst3r" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_1.png" id="3_r51r2"]
 [ext_resource type="Texture2D" uid="uid://bpqgqcqxm24ss" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_2.png" id="4_svxe5"]
+[ext_resource type="Texture2D" uid="uid://cnmrdvdii5jbo" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_2.png" id="4_xxr87"]
+[ext_resource type="Texture2D" uid="uid://dpqkql0dwnh8t" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_3.png" id="5_1xq8g"]
 [ext_resource type="Texture2D" uid="uid://bhlwe1f8eahav" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_3.png" id="5_6ea00"]
 [ext_resource type="Texture2D" uid="uid://dxcybgw63m3gu" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_4.png" id="6_halcc"]
+[ext_resource type="Texture2D" uid="uid://c15uwrhpn7i1k" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_4.png" id="6_l7bm2"]
 [ext_resource type="Texture2D" uid="uid://brrnobfa224wj" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_5.png" id="7_edd3r"]
+[ext_resource type="Texture2D" uid="uid://babc087oxs03m" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_5.png" id="7_eqmuw"]
+[ext_resource type="Texture2D" uid="uid://b4ynnux7fgkbb" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_6.png" id="8_0iwqp"]
 [ext_resource type="Texture2D" uid="uid://cdjvk3chxcuoc" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_6.png" id="8_jvf2j"]
 [ext_resource type="Texture2D" uid="uid://bhw2hyu4uq1e" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_7.png" id="9_hetpg"]
+[ext_resource type="Texture2D" uid="uid://dtcajp26plx0x" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_7.png" id="9_x7b8e"]
 [ext_resource type="Texture2D" uid="uid://dnev5jsjr4rh8" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_8.png" id="10_wnot1"]
 [ext_resource type="Texture2D" uid="uid://0mdjidtvuna8" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_9.png" id="11_x0w14"]
 [ext_resource type="Texture2D" uid="uid://c8lfr525pcjwi" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_10.png" id="12_4mmaw"]
@@ -19,12 +27,41 @@
 [ext_resource type="Texture2D" uid="uid://blcjnsi8rue0j" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_15.png" id="17_7ocfk"]
 [ext_resource type="Texture2D" uid="uid://dqu2mxba2kanq" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_16.png" id="18_km27w"]
 [ext_resource type="Texture2D" uid="uid://qwioveiff01v" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_17.png" id="19_eap4a"]
-[ext_resource type="Script" path="res://health_component.gd" id="20_defsk"]
+[ext_resource type="Script" uid="uid://7up0e3ky21t8" path="res://health_component.gd" id="20_defsk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jjgly"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_okm4f"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i5fh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r51r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xxr87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1xq8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l7bm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eqmuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0iwqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x7b8e")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_6eap8")
@@ -95,7 +132,7 @@ shape = SubResource("CircleShape2D_jjgly")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_okm4f")
-animation = &"walk"
+animation = &"death"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("20_defsk")

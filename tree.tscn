@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3r0rt6y2ijdp"]
+
+[ext_resource type="Texture2D" uid="uid://ugu5ued5oqgy" path="res://craftpix-net-918283-grassland-top-down-tileset-pixel-art/PNG/Trees_rocks.png" id="1_w8a0l"]
+[ext_resource type="Script" uid="uid://b6gv3j5dp6ysc" path="res://tree.gd" id="2_2k4m3"]
+[ext_resource type="Script" uid="uid://7up0e3ky21t8" path="res://health_component.gd" id="3_amulw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7162"]
+atlas = ExtResource("1_w8a0l")
+region = Rect2(0, 0, 64, 83)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n85y5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7162")
+}],
+"loop": true,
+"name": &"chop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7162")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7162")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vp104"]
+radius = 11.0
+height = 50.0
+
+[node name="Tree" type="StaticBody2D" groups=["trees"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2_2k4m3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_n85y5")
+animation = &"idle"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_amulw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["trees"]]
+shape = SubResource("CapsuleShape2D_vp104")

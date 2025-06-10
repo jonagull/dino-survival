@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bry0nmyqohk85"]
+[gd_scene load_steps=6 format=3 uid="uid://bry0nmyqohk85"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_k1i6v"]
+[ext_resource type="Script" uid="uid://cf2qrf0mybdg4" path="res://hud.gd" id="1_k1i6v"]
 [ext_resource type="PackedScene" uid="uid://4ql02m7snt4o" path="res://StoneTurret.tscn" id="2_sun80"]
 [ext_resource type="PackedScene" uid="uid://dnfgtfks3bm45" path="res://GhostStoneTurret.tscn" id="3_xvmn3"]
-[ext_resource type="Script" path="res://health_bar.gd" id="4_picsw"]
+[ext_resource type="Script" uid="uid://dq30qsilgu128" path="res://health_bar.gd" id="4_picsw"]
+[ext_resource type="PackedScene" uid="uid://buuovhbpfa0ni" path="res://wood_counter.tscn" id="5_loewa"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_k1i6v")
@@ -58,3 +59,7 @@ layout_mode = 0
 offset_left = 19.0
 offset_right = 110.0
 offset_bottom = 8.0
+
+[node name="MaterialsCounter" parent="." instance=ExtResource("5_loewa")]
+offset_top = 28.0
+offset_bottom = 28.0

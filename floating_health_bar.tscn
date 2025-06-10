@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bib1yv06m55la"]
 
-[ext_resource type="Script" path="res://floating_health_bar.gd" id="1_yusvn"]
-[ext_resource type="Script" path="res://health_bar.gd" id="2_h2ghf"]
+[ext_resource type="Script" uid="uid://05kxgo5yxtg" path="res://floating_health_bar.gd" id="1_yusvn"]
+[ext_resource type="Script" uid="uid://dq30qsilgu128" path="res://health_bar.gd" id="2_h2ghf"]
 
 [node name="FloatingHealthBar" type="Node2D"]
 script = ExtResource("1_yusvn")
