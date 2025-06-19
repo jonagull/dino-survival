@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var health_component = $HealthComponent
 @onready var anim_sprite = $AnimatedSprite2D
+@onready var collision_shape = $CollisionShape2D
 @export var speed: float = 40.0
 var target: Node2D = null
 var attack_range: float = 32.0
@@ -15,18 +16,31 @@ func _ready():
 	anim_sprite.play('walk')
 	add_to_group("enemies")  # Add to enemies group for turret targeting
 	health_component.health_depleted.connect(_on_health_depleted)
+	print("Enemy spawned: ", name)
 
 func take_damage(amount: float) -> void:
 	if health_component and not is_dead:
+		print("Enemy taking damage: ", name, " amount: ", amount, " current health: ", health_component.current_health)
 		health_component.take_damage(amount)
 
 func _on_health_depleted() -> void:
 	if not is_dead:
+		print("Enemy starting death sequence: ", name)
 		is_dead = true
+		# Disable collision and processing
+		if collision_shape:
+			collision_shape.set_deferred("disabled", true)
+		set_process(false)
+		set_physics_process(false)
+		# Remove from enemies group so turrets stop targeting
+		remove_from_group("enemies")
+		print("Enemy removed from group: ", name)
 		# Play death animation
 		anim_sprite.play('death')
+		print("Enemy playing death animation: ", name)
 		# Wait for animation to finish before removing
 		await anim_sprite.animation_finished
+		print("Enemy death animation finished, queueing free: ", name)
 		queue_free()
 
 func _process(delta):

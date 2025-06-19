@@ -24,35 +24,53 @@ func _ready():
 	# Connect signals
 	detection_area.body_entered.connect(_on_enemy_entered)
 	detection_area.body_exited.connect(_on_enemy_exited)
+	print("Turret initialized: ", name)
 
 func _process(delta):
-	if target and is_instance_valid(target):
+	# Clean up invalid enemies from the array
+	var old_size = enemies_in_range.size()
+	enemies_in_range = enemies_in_range.filter(func(enemy): 
+		return is_instance_valid(enemy) and not enemy.is_dead
+	)
+	if old_size != enemies_in_range.size():
+		print("Turret cleaned up enemies, new count: ", enemies_in_range.size())
+	
+	# Clear target if it's no longer valid or is dead
+	if target and (not is_instance_valid(target) or target.is_dead):
+		print("Turret clearing invalid target: ", name)
+		target = null
+	
+	if target and is_instance_valid(target) and not target.is_dead:
 		var distance = global_position.distance_to(target.global_position)
 		if distance <= attack_range:
 			time_since_last_attack += delta
 			if time_since_last_attack >= attack_cooldown:
 				time_since_last_attack = 0.0
-				print('shoot')
 				shoot()
 		else:
 			# Target is out of range, find a new one
+			print("Turret target out of range: ", name)
 			target = null
 	elif enemies_in_range.size() > 0:
 		# Find closest enemy in range
 		var closest_enemy = null
 		var closest_distance = INF
 		for enemy in enemies_in_range:
-			if is_instance_valid(enemy):
+			if is_instance_valid(enemy) and not enemy.is_dead:
 				var distance = global_position.distance_to(enemy.global_position)
 				if distance < closest_distance:
 					closest_distance = distance
 					closest_enemy = enemy
-		target = closest_enemy
+		if closest_enemy != target:
+			print("Turret found new target: ", name, " -> ", closest_enemy.name if closest_enemy else "none")
+			target = closest_enemy
 
 func shoot() -> void:
-	if not projectile_scene or not target:
+	if not projectile_scene or not target or not is_instance_valid(target) or target.is_dead:
+		print("Turret shoot cancelled - invalid target: ", name)
 		return
 		
+	print("Turret shooting at: ", name, " -> ", target.name)
 	var projectile = projectile_scene.instantiate()
 	projectile.global_position = global_position
 	projectile.set_target(target.global_position)
@@ -63,15 +81,17 @@ func take_damage(amount: float) -> void:
 	health_component.take_damage(amount)
 
 func _on_health_depleted() -> void:
-	# Handle turret destruction
+	print("Turret destroyed: ", name)
 	queue_free()
 
 func _on_enemy_entered(body: Node2D) -> void:
-	if body.is_in_group("enemies"):
+	if body.is_in_group("enemies") and is_instance_valid(body) and not body.is_dead:
+		print("Turret detected new enemy: ", name, " -> ", body.name)
 		enemies_in_range.append(body)
 
 func _on_enemy_exited(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
+		print("Turret enemy exited range: ", name, " -> ", body.name)
 		enemies_in_range.erase(body)
 		if target == body:
 			target = null 

@@ -12,10 +12,10 @@ stone_turret_scene = ExtResource("2_sun80")
 stone_turret_ghost_scene = ExtResource("3_xvmn3")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 1030.0
-offset_top = 543.0
-offset_right = 1142.0
-offset_bottom = 637.0
+offset_left = 1572.0
+offset_top = 883.0
+offset_right = 1847.0
+offset_bottom = 1018.0
 
 [node name="BuildButton" type="Button" parent="Panel"]
 layout_mode = 0
