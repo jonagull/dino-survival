@@ -12,7 +12,8 @@ signal wood_turret_selected()
 
 # Economy system - turret costs (matching main.gd)
 const WOOD_TURRET_COST = {"wood": 15, "stone": 0}
-const STONE_TURRET_COST = {"wood": 10, "stone": 20}
+# const STONE_TURRET_COST = {"wood": 10, "stone": 20}
+const STONE_TURRET_COST = {"wood": 0, "stone": 5}
 
 func _ready():
 	$Panel/BuildButton.pressed.connect(toggle_build_menu)

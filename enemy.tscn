@@ -1,62 +1,120 @@
-[gd_scene load_steps=31 format=3 uid="uid://dl30hepddrgww"]
+[gd_scene load_steps=24 format=3 uid="uid://dl30hepddrgww"]
 
 [ext_resource type="Script" uid="uid://cn5twnwbk6wg0" path="res://enemy.gd" id="1_i36je"]
-[ext_resource type="Texture2D" uid="uid://cxrcrx1j6t2ry" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_0.png" id="2_6eap8"]
-[ext_resource type="Texture2D" uid="uid://b8dl8y75yv4vn" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_0.png" id="2_i5fh1"]
-[ext_resource type="Texture2D" uid="uid://bjby26836ug5e" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_1.png" id="3_c3t7x"]
-[ext_resource type="Texture2D" uid="uid://cdbr0jv5rst3r" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_1.png" id="3_r51r2"]
-[ext_resource type="Texture2D" uid="uid://bpqgqcqxm24ss" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_2.png" id="4_svxe5"]
-[ext_resource type="Texture2D" uid="uid://cnmrdvdii5jbo" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_2.png" id="4_xxr87"]
-[ext_resource type="Texture2D" uid="uid://dpqkql0dwnh8t" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_3.png" id="5_1xq8g"]
-[ext_resource type="Texture2D" uid="uid://bhlwe1f8eahav" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_3.png" id="5_6ea00"]
-[ext_resource type="Texture2D" uid="uid://dxcybgw63m3gu" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_4.png" id="6_halcc"]
-[ext_resource type="Texture2D" uid="uid://c15uwrhpn7i1k" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_4.png" id="6_l7bm2"]
-[ext_resource type="Texture2D" uid="uid://brrnobfa224wj" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_5.png" id="7_edd3r"]
-[ext_resource type="Texture2D" uid="uid://babc087oxs03m" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_5.png" id="7_eqmuw"]
-[ext_resource type="Texture2D" uid="uid://b4ynnux7fgkbb" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_6.png" id="8_0iwqp"]
-[ext_resource type="Texture2D" uid="uid://cdjvk3chxcuoc" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_6.png" id="8_jvf2j"]
-[ext_resource type="Texture2D" uid="uid://bhw2hyu4uq1e" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_7.png" id="9_hetpg"]
-[ext_resource type="Texture2D" uid="uid://dtcajp26plx0x" path="res://assets/enemies/MonsterV1/Attack/skeleton-Attack_7.png" id="9_x7b8e"]
-[ext_resource type="Texture2D" uid="uid://dnev5jsjr4rh8" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_8.png" id="10_wnot1"]
-[ext_resource type="Texture2D" uid="uid://0mdjidtvuna8" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_9.png" id="11_x0w14"]
-[ext_resource type="Texture2D" uid="uid://c8lfr525pcjwi" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_10.png" id="12_4mmaw"]
-[ext_resource type="Texture2D" uid="uid://vbjdn0nlyf4g" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_11.png" id="13_hcdsa"]
-[ext_resource type="Texture2D" uid="uid://6kk25rwunh1a" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_12.png" id="14_qor8w"]
-[ext_resource type="Texture2D" uid="uid://bvqpsnf855nul" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_13.png" id="15_qway6"]
-[ext_resource type="Texture2D" uid="uid://brfw6c175tkf0" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_14.png" id="16_m0shy"]
-[ext_resource type="Texture2D" uid="uid://blcjnsi8rue0j" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_15.png" id="17_7ocfk"]
-[ext_resource type="Texture2D" uid="uid://dqu2mxba2kanq" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_16.png" id="18_km27w"]
-[ext_resource type="Texture2D" uid="uid://qwioveiff01v" path="res://assets/enemies/MonsterV1/Walk/skeleton-Walk_17.png" id="19_eap4a"]
+[ext_resource type="Texture2D" uid="uid://be0aakmtlpoaw" path="res://assets/enemies/raptor/death/raptor-dead.png" id="2_iifgy"]
+[ext_resource type="Texture2D" uid="uid://bo8gd3n3iirsl" path="res://assets/enemies/raptor/walk/raptor-walk.png" id="10_pwjut"]
+[ext_resource type="Texture2D" uid="uid://jri1g4dt7bxx" path="res://assets/enemies/raptor/attack/raptor-pounced-attack.png" id="11_attack"]
 [ext_resource type="Script" uid="uid://7up0e3ky21t8" path="res://health_component.gd" id="20_defsk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jjgly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1ltt"]
+atlas = ExtResource("11_attack")
+region = Rect2(0, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxifv"]
+atlas = ExtResource("11_attack")
+region = Rect2(384, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwjut"]
+atlas = ExtResource("11_attack")
+region = Rect2(768, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnovl"]
+atlas = ExtResource("11_attack")
+region = Rect2(1152, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmwgi"]
+atlas = ExtResource("11_attack")
+region = Rect2(1536, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2u8i"]
+atlas = ExtResource("11_attack")
+region = Rect2(1920, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otto8"]
+atlas = ExtResource("11_attack")
+region = Rect2(2304, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q82m"]
+atlas = ExtResource("11_attack")
+region = Rect2(2688, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg4t"]
+atlas = ExtResource("2_iifgy")
+region = Rect2(0, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yqyl"]
+atlas = ExtResource("2_iifgy")
+region = Rect2(384, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wujgv"]
+atlas = ExtResource("2_iifgy")
+region = Rect2(768, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb8ge"]
+atlas = ExtResource("2_iifgy")
+region = Rect2(1152, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0g06"]
+atlas = ExtResource("10_pwjut")
+region = Rect2(0, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar8e5"]
+atlas = ExtResource("10_pwjut")
+region = Rect2(384, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doop2"]
+atlas = ExtResource("10_pwjut")
+region = Rect2(768, 0, 384, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hcft"]
+atlas = ExtResource("10_pwjut")
+region = Rect2(1152, 0, 384, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_okm4f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_i5fh1")
+"texture": SubResource("AtlasTexture_e1ltt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_r51r2")
+"texture": SubResource("AtlasTexture_dxifv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_xxr87")
+"texture": SubResource("AtlasTexture_pwjut")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_1xq8g")
+"texture": SubResource("AtlasTexture_nnovl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_l7bm2")
+"texture": SubResource("AtlasTexture_jmwgi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_eqmuw")
+"texture": SubResource("AtlasTexture_g2u8i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_0iwqp")
+"texture": SubResource("AtlasTexture_otto8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_x7b8e")
+"texture": SubResource("AtlasTexture_8q82m")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yqyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wujgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb8ge")
 }],
 "loop": false,
 "name": &"death",
@@ -64,58 +122,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_6eap8")
+"texture": SubResource("AtlasTexture_n0g06")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_c3t7x")
+"texture": SubResource("AtlasTexture_ar8e5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_svxe5")
+"texture": SubResource("AtlasTexture_doop2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_6ea00")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_halcc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_edd3r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_jvf2j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_hetpg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_wnot1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_x0w14")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_4mmaw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_hcdsa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_qor8w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_qway6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_m0shy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_7ocfk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_km27w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_eap4a")
+"texture": SubResource("AtlasTexture_5hcft")
 }],
 "loop": true,
 "name": &"walk",
@@ -130,9 +146,10 @@ script = ExtResource("1_i36je")
 shape = SubResource("CircleShape2D_jjgly")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+position = Vector2(-1, -29)
+scale = Vector2(0.380729, 0.380729)
 sprite_frames = SubResource("SpriteFrames_okm4f")
-animation = &"death"
+animation = &"attack"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("20_defsk")

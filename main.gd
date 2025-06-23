@@ -165,9 +165,9 @@ func _unhandled_input(event):
 func place_turret_at(pos: Vector2):
 	# Check if player can afford the turret
 	var turret_cost = get_turret_cost(current_turret_scene)
-	if not can_afford_turret(turret_cost):
-		print("Not enough resources to build turret!")
-		return
+	# if not can_afford_turret(turret_cost):
+	# 	print("Not enough resources to build turret!")
+	# 	return
 	
 	# Check if placement is within range
 	if not is_placement_in_range(pos):
