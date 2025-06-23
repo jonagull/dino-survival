@@ -18,6 +18,10 @@ var current_turret_scene: PackedScene = null
 @export var wood_turret_scene: PackedScene
 @export var wood_turret_ghost_scene: PackedScene
 
+# Economy system - turret costs
+const WOOD_TURRET_COST = {"wood": 15, "stone": 0}
+const STONE_TURRET_COST = {"wood": 10, "stone": 20}
+
 # Wave system variables
 var current_wave: int = 0
 var enemies_per_wave: int = 5
@@ -122,6 +126,15 @@ func _unhandled_input(event):
 		place_turret_at(get_global_mouse_position())
 
 func place_turret_at(pos: Vector2):
+	# Check if player can afford the turret
+	var turret_cost = get_turret_cost(current_turret_scene)
+	if not can_afford_turret(turret_cost):
+		print("Not enough resources to build turret!")
+		return
+	
+	# Spend resources
+	spend_resources(turret_cost)
+	
 	var turret = current_turret_scene.instantiate()
 	turret.position = snap_to_grid(pos)
 	add_child(turret)
@@ -156,3 +169,31 @@ func _input(event):
 		# Stone turret
 		print("Keyboard selected: Stone Turret")
 		enter_build_mode(stone_turret_scene, stone_turret_ghost_scene)
+
+# Economy system functions
+func get_turret_cost(turret_scene: PackedScene) -> Dictionary:
+	if turret_scene == stone_turret_scene:
+		return STONE_TURRET_COST
+	elif turret_scene == wood_turret_scene:
+		return WOOD_TURRET_COST
+	else:
+		return {"wood": 0, "stone": 0}
+
+func can_afford_turret(cost: Dictionary) -> bool:
+	if not player:
+		return false
+	return player.wood >= cost.get("wood", 0) and player.stone >= cost.get("stone", 0)
+
+func spend_resources(cost: Dictionary) -> void:
+	if not player:
+		return
+	
+	# Spend wood
+	if cost.get("wood", 0) > 0:
+		player.wood -= cost["wood"]
+		player.wood_changed.emit(player.wood)
+	
+	# Spend stone
+	if cost.get("stone", 0) > 0:
+		player.stone -= cost["stone"]
+		player.stone_changed.emit(player.stone)

@@ -9,24 +9,35 @@ extends CanvasLayer
 signal stone_turret_selected(scene: PackedScene, ghost_scene: PackedScene)
 signal wood_turret_selected()
 
+# Economy system - turret costs (matching main.gd)
+const WOOD_TURRET_COST = {"wood": 15, "stone": 0}
+const STONE_TURRET_COST = {"wood": 10, "stone": 20}
+
 func _ready():
 	$Panel/BuildButton.pressed.connect(toggle_build_menu)
 	$Panel/BuildMenu/WoodTurretButton.pressed.connect(_on_wood_turret_selected)
 	$Panel/BuildMenu/StoneTurretButton.pressed.connect(_on_stone_turret_selected)
 	$Panel/BuildMenu/WoodTurretButton.disabled = true
 	$Panel/BuildMenu/StoneTurretButton.disabled = true
-	$Panel/BuildMenu/StoneTurretButton.tooltip_text = "Requires 20 wood"
+	$Panel/BuildMenu/WoodTurretButton.tooltip_text = "Requires 15 wood"
+	$Panel/BuildMenu/StoneTurretButton.tooltip_text = "Requires 10 wood, 20 stone"
 		
 func update_build_menu(amount: int) -> void:
-	if amount >= 20:
-		$Panel/BuildMenu/WoodTurretButton.disabled = false
-		$Panel/BuildMenu/StoneTurretButton.disabled = false
-	elif amount >= 10:
-		$Panel/BuildMenu/WoodTurretButton.disabled = false
-		$Panel/BuildMenu/StoneTurretButton.disabled = true
-	else:
-		$Panel/BuildMenu/WoodTurretButton.disabled = true
-		$Panel/BuildMenu/StoneTurretButton.disabled = true
+	# Get current player resources from the main scene
+	var main_scene = get_tree().current_scene
+	if not main_scene or not main_scene.player:
+		return
+	
+	var player_wood = main_scene.player.wood
+	var player_stone = main_scene.player.stone
+	
+	# Check if player can afford wood turret
+	var can_afford_wood_turret = player_wood >= WOOD_TURRET_COST["wood"] and player_stone >= WOOD_TURRET_COST["stone"]
+	$Panel/BuildMenu/WoodTurretButton.disabled = not can_afford_wood_turret
+	
+	# Check if player can afford stone turret
+	var can_afford_stone_turret = player_wood >= STONE_TURRET_COST["wood"] and player_stone >= STONE_TURRET_COST["stone"]
+	$Panel/BuildMenu/StoneTurretButton.disabled = not can_afford_stone_turret
 
 func toggle_build_menu():
 	build_menu.visible = not build_menu.visible
