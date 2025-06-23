@@ -13,6 +13,10 @@ var current_turret_scene: PackedScene = null
 @export var enemy_scene: PackedScene
 @export var floating_health_bar_scene: PackedScene
 @export var spawn_enemies: bool = true
+@export var stone_turret_scene: PackedScene
+@export var stone_turret_ghost_scene: PackedScene
+@export var wood_turret_scene: PackedScene
+@export var wood_turret_ghost_scene: PackedScene
 
 # Wave system variables
 var current_wave: int = 0
@@ -141,3 +145,14 @@ func _on_wood_turret_selected():
 	spawn_enemy()
 	# Placeholder for later turret types
 	print("Wood turret selected — implement later if needed.")
+
+func _input(event):
+	# Handle keyboard turret selection even when build menu is closed
+	if event.is_action_pressed("select_turret_1"):
+		# Wood turret - you'll need to implement this
+		print("Keyboard selected: Wood Turret")
+		# enter_build_mode(wood_turret_scene, wood_turret_ghost_scene)
+	elif event.is_action_pressed("select_turret_2"):
+		# Stone turret
+		print("Keyboard selected: Stone Turret")
+		enter_build_mode(stone_turret_scene, stone_turret_ghost_scene)
