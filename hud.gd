@@ -5,6 +5,7 @@ extends CanvasLayer
 
 @onready var build_menu = $Panel/BuildMenu
 @onready var build_button = $Panel/BuildButton
+@onready var interaction_tip = $InteractionTip
 
 signal stone_turret_selected(scene: PackedScene, ghost_scene: PackedScene)
 signal wood_turret_selected()
@@ -62,3 +63,10 @@ func _on_wood_turret_selected():
 func _on_stone_turret_selected():
 	print("Selected: Stone Turret")
 	stone_turret_selected.emit(stone_turret_scene, stone_turret_ghost_scene)
+
+func show_interaction_tip(message: String) -> void:
+	interaction_tip.text = message
+	interaction_tip.visible = true
+
+func hide_interaction_tip() -> void:
+	interaction_tip.visible = false

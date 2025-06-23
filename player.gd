@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var health_component = $HealthComponent
 @onready var tree_detection = $TreeDetectionArea
 @onready var stone_detection = $StoneDetectionArea
+@onready var hud = get_node("/root/Main/HUD")
 @export var speed := 100
 
 var last_direction := "down"
@@ -63,7 +64,15 @@ func _physics_process(_delta):
 		anim_sprite.play()
 	
 func _unhandled_input(event):
+	# Check for left mouse click or E key press
+	var should_interact = false
+	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		should_interact = true
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_E:
+		should_interact = true
+	
+	if should_interact:
 		# Tree interaction
 		if current_tree:
 			if not is_chopping:
@@ -77,7 +86,6 @@ func _unhandled_input(event):
 				start_mining()
 			else:
 				stop_mining()
-
 
 func _process(delta):
 	if is_chopping and current_tree:
@@ -138,17 +146,25 @@ func add_stone(amount: int) -> void:
 func _on_tree_detection_area_body_entered(body: Node2D):
 	if body.is_in_group("trees"):
 		current_tree = body
+		if hud:
+			hud.show_interaction_tip("Press E to chop")
 
 func _on_tree_detection_area_body_exited(body: Node2D):
 	if body == current_tree:
 		stop_chopping()
 		current_tree = null
-		
+		if hud:
+			hud.hide_interaction_tip()
+
 func _on_stone_detection_area_body_entered(body: Node2D):
 	if body.is_in_group("stones"):
 		current_stone = body
+		if hud:
+			hud.show_interaction_tip("Press E to mine")
 
 func _on_stone_detection_area_body_exited(body: Node2D):
 	if body == current_stone:
 		stop_mining()
 		current_stone  = null
+		if hud:
+			hud.hide_interaction_tip()
