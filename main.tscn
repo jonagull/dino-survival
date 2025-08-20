@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bcr2i037bgl5u"]
+[gd_scene load_steps=30 format=4 uid="uid://bcr2i037bgl5u"]
 
 [ext_resource type="Script" uid="uid://drer30ai86xvt" path="res://main.gd" id="1_55x0y"]
 [ext_resource type="PackedScene" uid="uid://dk1cx3fwgswpw" path="res://player.tscn" id="1_bw217"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bj0oufytp34re" path="res://assets/waterbig.png" id="13_vivmo"]
 [ext_resource type="Texture2D" uid="uid://drnov7gn81bkt" path="res://assets/waterdark.png" id="14_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://d2diqb646uhhp" path="res://stone.tscn" id="14_w48qg"]
+[ext_resource type="PackedScene" uid="uid://bofq08nwin6py" path="res://minigame.tscn" id="16_yaehf"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_6wqkp"]
 tile_data = PackedInt32Array(262144, 0, 23, 327680, 0, 24, 196609, 65536, 22, 262145, 65536, 23, 327681, 65536, 24, 2, 131072, 19, 65538, 131072, 20, 131074, 131072, 21, 196610, 131072, 22, 262146, 131072, 23, 327682, 131072, 24, 393218, 131072, 25, 3, 196608, 19, 65539, 196608, 20, 131075, 196608, 21, 196611, 196608, 22, 262147, 196608, 23, 327683, 196608, 24, 393219, 196608, 25, 4, 262144, 19, 65540, 262144, 20, 131076, 262144, 21, 196612, 262144, 22, 262148, 262144, 23, 327684, 262144, 24, 393220, 262144, 25, 65541, 327680, 20, 131077, 327680, 21, 196613, 327680, 22, 262149, 327680, 23, 327685, 327680, 24, 393221, 327680, 25, 262150, 393216, 23)
@@ -3973,3 +3974,7 @@ position = Vector2(553, 394)
 
 [node name="Stone5" parent="Stones" instance=ExtResource("14_w48qg")]
 position = Vector2(452, 229)
+
+[node name="Interact" parent="." instance=ExtResource("16_yaehf")]
+z_index = 6
+position = Vector2(324, 396)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://dk1cx3fwgswpw"]
+[gd_scene load_steps=98 format=3 uid="uid://dk1cx3fwgswpw"]
 
 [ext_resource type="Script" uid="uid://dv1imdny88ktf" path="res://player.gd" id="1_qt36i"]
 [ext_resource type="Texture2D" uid="uid://cw1uuadtpoj6o" path="res://characterAnimations/PNG/Sword_attack/Sword_attack_full.png" id="2_5wq57"]
@@ -692,6 +692,8 @@ height = 24.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_e76cc"]
 radius = 12.1934
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 2
@@ -727,3 +729,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeDetectionArea"]
 scale = Vector2(2.065, 2.065)
 shape = SubResource("CircleShape2D_e76cc")
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+shape = SubResource("CircleShape2D_sweqy")
