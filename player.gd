@@ -8,11 +8,15 @@ extends CharacterBody2D
 @export var speed := 100
 
 var last_direction := "down"
+
 var wood: int = 0
 var stone: int = 0
+var brush: int = 0
+
 var current_tree: Node2D = null
 var current_stone: Node2D = null
 var chop_cooldown: float = 0.5
+var current_brush: Node2D = null
 var time_since_last_chop: float = 0.0
 var time_since_last_mine: float = 0.0
 var is_chopping: bool = false
@@ -20,6 +24,13 @@ var is_mining: bool = false
 
 signal wood_changed(amount: int)
 signal stone_changed(amount: int)
+
+func set_brush(brush_node):
+	current_brush = brush_node
+	
+func clear_brush():
+	current_brush = null
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -39,6 +50,8 @@ func _physics_process(_delta):
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 	)
+	
+	#current_brush.chop()
 
 	if input_vector.length() > 0:
 		velocity = input_vector.normalized() * speed
@@ -73,6 +86,13 @@ func _unhandled_input(event):
 		should_interact = true
 	
 	if should_interact:
+		#Brush interaction
+		if current_brush:
+			current_brush.chop()
+			print("ojsadfhalkjshflakjshdf")
+			anim_sprite.animation = "chop_" + last_direction
+			anim_sprite.play()
+
 		# Tree interaction
 		if current_tree:
 			if not is_chopping:
@@ -137,11 +157,16 @@ func _on_health_depleted() -> void:
 
 func add_wood(amount: int) -> void:
 	wood += amount
-	wood_changed.emit(wood)  # Emit signal for UI update
+	wood_changed.emit(wood) # Emit signal for UI update
+
+func add_brush(amount: int) -> void:
+	brush += amount
+
+	# wood_changed.emit(wood) # Emit signal for UI update
 
 func add_stone(amount: int) -> void:
 	stone += amount
-	stone_changed.emit(stone)  # Emit signal for UI update
+	stone_changed.emit(stone) # Emit signal for UI update
 
 func _on_tree_detection_area_body_entered(body: Node2D):
 	if body.is_in_group("trees"):
@@ -165,6 +190,6 @@ func _on_stone_detection_area_body_entered(body: Node2D):
 func _on_stone_detection_area_body_exited(body: Node2D):
 	if body == current_stone:
 		stop_mining()
-		current_stone  = null
+		current_stone = null
 		if hud:
 			hud.hide_interaction_tip()
