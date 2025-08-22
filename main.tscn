@@ -3885,7 +3885,6 @@ sources/0 = SubResource("TileSetAtlasSource_dg77c")
 script = ExtResource("1_55x0y")
 enemy_scene = ExtResource("2_c75ks")
 floating_health_bar_scene = ExtResource("3_ebi37")
-spawn_enemies = false
 stone_turret_scene = ExtResource("4_w48qg")
 stone_turret_ghost_scene = ExtResource("5_vivmo")
 
