@@ -42,6 +42,9 @@ func _physics_process(_delta):
 		anim_sprite.play()
 	
 func _unhandled_input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+		print(event)
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
 	pass
 
 func _process(delta):

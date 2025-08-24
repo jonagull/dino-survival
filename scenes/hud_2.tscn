@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dng11hfiiqx14"]
+
+[ext_resource type="Script" uid="uid://1xi2noivbiov" path="res://scripts/hud_2.gd" id="1_q1nc5"]
+
+[node name="HUD2" type="Node2D" groups=["HUD"]]
+script = ExtResource("1_q1nc5")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_right = 195.0
+offset_bottom = 27.0
+
+[node name="Interact" type="Label" parent="."]
+offset_left = 848.0
+offset_top = 914.0
+offset_right = 1104.0
+offset_bottom = 1017.0
+theme_override_font_sizes/font_size = 75
+text = "Press E"

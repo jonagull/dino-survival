@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://da54t28d1fxa6"]
+[gd_scene load_steps=54 format=3 uid="uid://da54t28d1fxa6"]
 
 [ext_resource type="Script" uid="uid://depmdn562cahq" path="res://scripts/player_2.gd" id="1_8xjnt"]
 [ext_resource type="Texture2D" uid="uid://dgtr4nafb5rru" path="res://animations/player2/Boy  sheet wlaking and Idle.png" id="2_ufh5k"]
+[ext_resource type="PackedScene" uid="uid://dng11hfiiqx14" path="res://scenes/hud_2.tscn" id="3_yjax8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3sgo"]
 atlas = ExtResource("2_ufh5k")
@@ -403,15 +404,23 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xjnt"]
-radius = 16.0
-height = 58.0
+radius = 11.0
 
-[node name="Player2" type="CharacterBody2D"]
+[node name="Player2" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_8xjnt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(0.40625, 0.4)
 sprite_frames = SubResource("SpriteFrames_gil7u")
 animation = &"idle_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8xjnt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.465, 3.465)
+
+[node name="HUD2" parent="Camera2D" instance=ExtResource("3_yjax8")]
+position = Vector2(-366, -248)
+scale = Vector2(0.375, 0.375)

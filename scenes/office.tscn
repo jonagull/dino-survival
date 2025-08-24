@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfn0re8drww1t"]
+[gd_scene load_steps=3 format=3 uid="uid://cfn0re8drww1t"]
 
 [ext_resource type="PackedScene" uid="uid://da54t28d1fxa6" path="res://scenes/player_2.tscn" id="1_3e7dm"]
+[ext_resource type="PackedScene" uid="uid://c0sd6t1te2ufe" path="res://scenes/officeLevel.tscn" id="2_n0wcf"]
 
 [node name="Office" type="Node2D"]
 
 [node name="Player2" parent="." instance=ExtResource("1_3e7dm")]
+z_index = 2
+position = Vector2(152.21, 296.64)
+
+[node name="OfficeLevel" parent="." instance=ExtResource("2_n0wcf")]
+position = Vector2(1, 1)
