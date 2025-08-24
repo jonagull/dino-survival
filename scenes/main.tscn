@@ -1,11 +1,10 @@
-[gd_scene load_steps=31 format=4 uid="uid://bcr2i037bgl5u"]
+[gd_scene load_steps=30 format=4 uid="uid://bcr2i037bgl5u"]
 
 [ext_resource type="Script" uid="uid://drer30ai86xvt" path="res://scripts/main.gd" id="1_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://dl30hepddrgww" path="res://scenes/enemy.tscn" id="2_0ld40"]
 [ext_resource type="PackedScene" uid="uid://bib1yv06m55la" path="res://scenes/floating_health_bar.tscn" id="3_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://4ql02m7snt4o" path="res://scenes/StoneTurret.tscn" id="4_yc10j"]
 [ext_resource type="PackedScene" uid="uid://dnfgtfks3bm45" path="res://scenes/GhostStoneTurret.tscn" id="5_jscy8"]
-[ext_resource type="PackedScene" uid="uid://da54t28d1fxa6" path="res://scenes/player_2.tscn" id="6_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://dk1cx3fwgswpw" path="res://scenes/player.tscn" id="7_y6deb"]
 [ext_resource type="PackedScene" uid="uid://bry0nmyqohk85" path="res://scenes/HUD.tscn" id="8_og1vs"]
 [ext_resource type="Texture2D" uid="uid://ugu5ued5oqgy" path="res://assets/craftpix-net-918283-grassland-top-down-tileset-pixel-art/PNG/Trees_rocks.png" id="9_2wyq8"]
@@ -3888,11 +3887,6 @@ enemy_scene = ExtResource("2_0ld40")
 floating_health_bar_scene = ExtResource("3_gqmmt")
 stone_turret_scene = ExtResource("4_yc10j")
 stone_turret_ghost_scene = ExtResource("5_jscy8")
-
-[node name="Player2" parent="." instance=ExtResource("6_pm3ni")]
-visible = false
-z_index = 10
-position = Vector2(500, 200)
 
 [node name="Player" parent="." instance=ExtResource("7_y6deb")]
 z_index = 12
