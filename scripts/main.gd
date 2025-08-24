@@ -6,6 +6,7 @@ extends Node2D
 @onready var player_health_bar = $HUD/PlayerHealthBar
 @onready var materials_counter = $HUD/MaterialsCounter
 # @onready var stone_counter = $HUD/StoneCounter
+@onready var music = $AudioStreamPlayer2D
 
 var build_mode: bool = false
 var current_ghost: Node2D = null
@@ -60,6 +61,8 @@ func _ready():
 	# Setup player health bar
 	if player and player_health_bar:
 		player_health_bar.setup(player.get_node("HealthComponent"))
+
+	music.play()
 	
 	# Start first wave after a delay
 	await get_tree().create_timer(wave_delay).timeout
@@ -74,7 +77,6 @@ func start_wave():
 func spawn_enemy():
 	if not spawn_enemies:
 		return
-
 
 	if enemies_remaining <= 0:
 		wave_in_progress = false

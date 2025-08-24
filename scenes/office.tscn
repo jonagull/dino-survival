@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfn0re8drww1t"]
+[gd_scene load_steps=5 format=3 uid="uid://cfn0re8drww1t"]
 
 [ext_resource type="PackedScene" uid="uid://da54t28d1fxa6" path="res://scenes/player_2.tscn" id="1_3e7dm"]
+[ext_resource type="Script" uid="uid://cw1ohvjoemptd" path="res://scenes/office.gd" id="1_7jj4f"]
 [ext_resource type="PackedScene" uid="uid://c0sd6t1te2ufe" path="res://scenes/officeLevel.tscn" id="2_n0wcf"]
+[ext_resource type="AudioStream" uid="uid://cox4u7as8oeqy" path="res://assets/music/game-gaming-minecraft-background-music-377647.mp3" id="3_jwaux"]
 
 [node name="Office" type="Node2D"]
+script = ExtResource("1_7jj4f")
 
 [node name="Player2" parent="." instance=ExtResource("1_3e7dm")]
 z_index = 2
@@ -11,3 +14,7 @@ position = Vector2(152.21, 296.64)
 
 [node name="OfficeLevel" parent="." instance=ExtResource("2_n0wcf")]
 position = Vector2(1, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jwaux")
+parameters/looping = true

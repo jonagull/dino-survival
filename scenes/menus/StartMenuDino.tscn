@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b86st4sm54mt5"]
+
+[ext_resource type="Script" uid="uid://drchscrgi3cch" path="res://scenes/menus/start_menu_dino.gd" id="1_tpe5p"]
+[ext_resource type="Texture2D" uid="uid://bmvusikcfx8wl" path="res://assets/thumb-1920-1398877.jpg" id="2_lm3xm"]
+
+[node name="StartMenuDino" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tpe5p")
+
+[node name="Thumb-1920-1398877" type="Sprite2D" parent="."]
+position = Vector2(958, 543)
+texture = ExtResource("2_lm3xm")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 358.0
+offset_right = 1084.0
+offset_bottom = 511.0
+text = "Start"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 803.0
+offset_top = 546.0
+offset_right = 1087.0
+offset_bottom = 699.0
+text = "Back
+"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
