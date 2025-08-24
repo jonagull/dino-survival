@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2diqb646uhhp"]
+
+[ext_resource type="Script" uid="uid://h7gpmjbx22v1" path="res://scripts/stone.gd" id="1_cxlo0"]
+[ext_resource type="Texture2D" uid="uid://ugu5ued5oqgy" path="res://assets/craftpix-net-918283-grassland-top-down-tileset-pixel-art/PNG/Trees_rocks.png" id="1_rq0vd"]
+[ext_resource type="Script" uid="uid://7up0e3ky21t8" path="res://scripts/health_component.gd" id="2_cxlo0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rot5g"]
+atlas = ExtResource("1_rq0vd")
+region = Rect2(128, 392, 32, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4nmc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rot5g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y7yd2"]
+radius = 19.0263
+
+[node name="Stone" type="StaticBody2D" groups=["stones"]]
+z_index = 12
+collision_layer = 2
+script = ExtResource("1_cxlo0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v4nmc")
+
+[node name="HealthComponent" type="Node" parent="." groups=["stones"]]
+script = ExtResource("2_cxlo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["stones"]]
+shape = SubResource("CircleShape2D_y7yd2")
