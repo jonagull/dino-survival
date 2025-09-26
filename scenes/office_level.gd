@@ -11,14 +11,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if HUD:
 			HUD.toggle_interact_text()
-			print("tried")
-		print("got him!")
 	pass
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if HUD:
 			HUD.toggle_interact_text()
-			print("tried")
-		print("got him!")
-	pass
+		pass

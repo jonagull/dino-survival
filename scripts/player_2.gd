@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var speed := 100
 
 var last_direction := "down"
-
 func _ready():
 	pass
 
@@ -22,7 +21,7 @@ func _physics_process(_delta):
 		velocity = input_vector.normalized() * speed
 		move_and_slide()
 
-		# Determine direction
+		# Determine directionwd
 		if abs(input_vector.x) > abs(input_vector.y):
 			if input_vector.x > 0:
 				last_direction = "right"
