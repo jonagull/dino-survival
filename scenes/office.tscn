@@ -13,7 +13,7 @@ z_index = 2
 position = Vector2(152.21, 296.64)
 
 [node name="OfficeLevel" parent="." instance=ExtResource("2_n0wcf")]
-position = Vector2(1, 1)
+position = Vector2(2, 2)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_jwaux")

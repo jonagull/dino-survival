@@ -1,0 +1,5 @@
+const NOT_FOUND = "not_found"
+const NORTH = "north"
+const SOUTH = "south"
+const EAST = "east"
+const WEST = "west"

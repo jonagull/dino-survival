@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcr03dkyky01p"]
+
+[ext_resource type="Script" path="res://text_adventure.gd" id="1_1l3lu"]
+[ext_resource type="Script" path="res://line_edit.gd" id="2_p65at"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1l3lu")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 2
+color = Color(0.027451, 0.113725, 0.0117647, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 1014.0
+offset_right = 389.0
+offset_bottom = 1056.0
+
+[node name="Rows" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Rows/HBoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/Rows/HBoxContainer"]
+layout_mode = 2
+caret_blink = true
+script = ExtResource("2_p65at")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+
+[connection signal="text_submitted" from="MarginContainer/Rows/HBoxContainer/LineEdit" to="MarginContainer/Rows/HBoxContainer/LineEdit" method="_on_text_submitted"]

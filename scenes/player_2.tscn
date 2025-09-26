@@ -413,7 +413,8 @@ script = ExtResource("1_8xjnt")
 position = Vector2(-1.90735e-06, 1.90735e-06)
 scale = Vector2(0.40625, 0.4)
 sprite_frames = SubResource("SpriteFrames_gil7u")
-animation = &"idle_up"
+animation = &"idle_backward"
+frame_progress = 0.204848
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8xjnt")

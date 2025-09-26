@@ -1,0 +1,20 @@
+{
+    "room1": {
+        "intro": "You are in a room with a fireplace with a roaring fire and a old oak table. It is otherwise empty.",
+        "exits": {
+            "north": {
+                "description": "Another room to the north.",
+                "destination": "room2"
+            }
+        }
+    },
+    "room2": {
+        "intro": "You are in a corridor with a door to the east",
+        "exits": {
+            "south": {
+                "description": "South, back the way you came.",
+                "destination": "room1"
+            }
+        }
+    }
+}
